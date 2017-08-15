@@ -52,8 +52,9 @@ class Transmit implements Callable<String>{
         while(true) {
             BufferedReader br = new BufferedReader(
                     new InputStreamReader(socket.getInputStream()));
-            HashMap<String, Socket> hashMap = CharServer.getAllSocket();
             String outMsg = br.readLine();
+
+            HashMap<String, Socket> hashMap = CharServer.getAllSocket();
             int index=outMsg.indexOf('/');
             //群聊
             if(index==-1){
