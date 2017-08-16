@@ -23,6 +23,7 @@ public class SnakeGameTest {
 		SnakeController sc = new SnakeController(snake, ground, food, gamePanel);
 		gamePanel.setFocusable(true);
 		gamePanel.addKeyListener(sc);
+
 		snake.setSnakeListener(sc);
 
 		frame.add(gamePanel);

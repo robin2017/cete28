@@ -96,7 +96,6 @@ public class Snake {
 		@Override
 		public void run() {
 			while(true&&alive){
-
 				move();
 				snakeListener.snakeMoved();
 				try {

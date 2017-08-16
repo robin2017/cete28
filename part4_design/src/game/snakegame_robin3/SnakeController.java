@@ -29,10 +29,9 @@ public class SnakeController extends KeyAdapter implements SnakeListener {
             snake.setAlive(false);
             System.out.println("------  game over --------");
         }
-
-
-
+        gamePanel.repaint();
     }
+
     public void keyPressed(KeyEvent e) {
         int keyCode = e.getKeyCode();
         switch (keyCode) {
