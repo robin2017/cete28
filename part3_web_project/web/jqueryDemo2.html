@@ -1,0 +1,78 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Insert title here</title>
+<style>
+.window {
+	background-color: #D0DEF0;
+	width: 250px;
+	margin: 5px;
+	position: absolute;
+	display: none;
+}
+
+.content {
+	height: 150px;
+	background-color: white;
+	border: 2px solid #D0DEF0;
+	padding: 2px;
+	overflow: auto;
+}
+#image1{
+   display:none;
+}
+.title img {
+	width: 15px;
+	height: 15px;
+	float: right;
+	cursor: pointer;
+}
+</style>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript">
+	function openOrCloseWin(){
+		var myWin=$("#center");
+		myWin.toggle();
+	}
+function openWin(){
+	//var cenwin = document.getElementById("center");
+	//var jqueryObj = $(cenwin);
+	var jqueryObj = $("#center");
+	//jqueryObj.show();
+	var jsObj = jqueryObj.get(0);
+	jsObj.style.display="block";
+}
+function closeWin(){
+	var cenwin = document.getElementById("center");
+	//cenwin.style.display = "none";
+	//var cenwin = $("#center");
+	//cenwin.fadeOut(2000);
+	//cenwin.slideUp(1000);
+}
+function openImage(){
+	var img1 = document.getElementById("image1");
+	img1.style.display = "block";
+}
+</script>
+</head>
+<body>
+<a href="javaScript:openOrCloseWin()">打开/关闭窗口</a>
+<a href="javaScript:openImage()">显示图片</a>
+
+	<div id="center" class="window">
+		<div class="title">
+
+			<img src="../close.gif" alt="close" onclick="closeWin()"/> 我是中间显示窗口的标题栏
+		</div>
+		<div class="content">我是中间显示窗口的内容区 我是中间显示窗口的内容区 我是中间显示窗口的内容区
+			我是中间显示窗口的内容区 我是中间显示窗口的内容区 我是中间显示窗口的内容区 我是中间显示窗口的内容区 我是中间显示窗口的内容区
+			我是中间显示窗口的内容区 我是中间显示窗口的内容区 我是中间显示窗口的内容区 我是中间显示窗口的内容区 我是中间显示窗口的内容区
+			我是中间显示窗口的内容区 我是中间显示窗口的内容区 我是中间显示窗口的内容区 我是中间显示窗口的内容区 我是中间显示窗口的内容区
+			我是中间显示窗口的内容区 我是中间显示窗口的内容区 我是中间显示窗口的内容区 我是中间显示窗口的内容区 我是中间显示窗口的内容区</div>
+	</div>
+	
+	<br/>
+	<img src="../if.jpg" id="image1"/>
+</body>
+</html>
