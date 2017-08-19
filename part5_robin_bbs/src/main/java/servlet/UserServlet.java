@@ -24,7 +24,7 @@ public class UserServlet extends MethodDispatcherServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
-        doGet(req,resp);
+        doGet(req, resp);
     }
     public void login(HttpServletRequest req, HttpServletResponse resp)
             throws IOException {
@@ -46,10 +46,33 @@ public class UserServlet extends MethodDispatcherServlet {
             resp.sendRedirect("postServlet?method=list");
         }
     }
-    private void register(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    public void register(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.getRequestDispatcher("/WEB-INF/jsp/register.jsp").forward(req,resp);
     }
-    private void exit(HttpServletRequest req, HttpServletResponse resp){
+
+
+    public void registerConfire(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
+        int res=0;
+        int id=Integer.parseInt(req.getParameter("id"));
+        String name=req.getParameter("name");
+        String password=req.getParameter("password");
+        String phone=req.getParameter("phone");
+        String email=req.getParameter("email");
+
+        res=userService.insertUser(new User(id, name, password, phone, email));
+        if(res==1){
+            //插入成功
+            //在web-inf内部不能用重定向，只能跳转
+            System.out.println("插入用户成功");
+            resp.sendRedirect("userServlet?method=login");
+        }else{
+            //插入失败
+            System.out.println("插入用户失败");
+            resp.sendRedirect("userServlet?method=register");
+        }
+    }
+    public void exit(HttpServletRequest req, HttpServletResponse resp){
 
     }
 }

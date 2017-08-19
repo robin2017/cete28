@@ -1,8 +1,8 @@
 package service;
 
 import entity.User;
-import org.robin.jdbc.DaoSupport;
-import org.robin.jdbc.RowMapper;
+import jdbc.DaoSupport;
+import jdbc.RowMapper;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;

@@ -2,8 +2,8 @@ package service;
 
 
 import entity.Post;
-import org.robin.jdbc.DaoSupport;
-import org.robin.jdbc.RowMapper;
+import jdbc.DaoSupport;
+import jdbc.RowMapper;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -29,8 +29,7 @@ public class PostServiceImpl {
     }
 
     public Post findPostById(int id) {
-        return ds.findById(id, "select * from post where id= ?",
-                new PostRowMapper());
+        return ds.findById(id, "select * from post where id= ?", new PostRowMapper());
 
     }
 
