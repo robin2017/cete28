@@ -1,8 +1,8 @@
 package service;
 
 import entity.User;
-import jdbc.DaoSupport;
-import jdbc.RowMapper;
+import org.robin.jdbc.DaoSupport;
+import org.robin.jdbc.RowMapper;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -19,10 +19,19 @@ public class UserServiceImpl {
             return users.get(0);
         return null;
     }
+    public int insertUser(User user){
+       return dao.saveOrUpOrDel("insert into user(id,name,password,phone,email) values (?,?,?,?,?)",
+                user.getId(),
+                user.getName(),
+                user.getPassword(),
+                user.getPhone(),
+                user.getEmail());
+
+    }
 }
 class UserRowMapper implements RowMapper<User> {
 
-    @Override
+   // @Override
     public User getRow(ResultSet rs) throws SQLException {
         User user = new User(rs.getInt("id"),
                 rs.getString("name"),

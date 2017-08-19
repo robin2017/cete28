@@ -14,7 +14,9 @@
 <form action="/userServlet?method=login" method="post">
   姓名:<input type="text" name="name"/><br/>
   密码:<input type="text" name="password"/><br/>
-  <input type="submit" value="登陆"/>
+  <input type="submit" value="登陆"/>&nbsp&nbsp&nbsp
+  <a href="userServlet?method=register"method="post">注册</a>
 </form>
+
 </body>
 </html>

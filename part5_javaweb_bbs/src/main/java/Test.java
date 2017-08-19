@@ -1,6 +1,6 @@
 import java.sql.Connection;
 
-import jdbc.JdbcUtil;
+import org.robin.jdbc.JdbcUtil;
 
 
 public class Test {

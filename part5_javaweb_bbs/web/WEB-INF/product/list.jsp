@@ -13,9 +13,11 @@
 <body>
 欢迎${user.username}访问!<br/>
 <table border = "1" width="50%">
+
 <tr>
   <td>pId</td><td>pName</td><td>pcount</td><td>操作</td>
 </tr>
+
 <c:forEach items="${products }" var="product">
    <tr>
      <td>${product.id }</td>
