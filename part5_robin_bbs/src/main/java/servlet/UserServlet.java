@@ -26,7 +26,7 @@ public class UserServlet extends MethodDispatcherServlet {
             throws ServletException, IOException {
         doGet(req, resp);
     }
-    public void login(HttpServletRequest req, HttpServletResponse resp)
+    private void login(HttpServletRequest req, HttpServletResponse resp)
             throws IOException {
         String name=req.getParameter("name");
         String password=req.getParameter("password");
@@ -46,12 +46,12 @@ public class UserServlet extends MethodDispatcherServlet {
             resp.sendRedirect("postServlet?method=list");
         }
     }
-    public void register(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    private void register(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.getRequestDispatcher("/WEB-INF/jsp/register.jsp").forward(req,resp);
     }
 
 
-    public void registerConfire(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    private void registerConfire(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
         int res=0;
         int id=Integer.parseInt(req.getParameter("id"));
@@ -72,7 +72,7 @@ public class UserServlet extends MethodDispatcherServlet {
             resp.sendRedirect("userServlet?method=register");
         }
     }
-    public void exit(HttpServletRequest req, HttpServletResponse resp){
+    private void exit(HttpServletRequest req, HttpServletResponse resp){
 
     }
 }

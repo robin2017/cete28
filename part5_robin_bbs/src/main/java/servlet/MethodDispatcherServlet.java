@@ -11,13 +11,13 @@ import java.lang.reflect.Method;
  */
 
 public class MethodDispatcherServlet extends HttpServlet {
-    public void methodDispatcher(String methodName,HttpServletRequest req, HttpServletResponse resp)  {
+    public void methodDispatcher(String methodName, HttpServletRequest req, HttpServletResponse resp) {
         try {
-            System.out.println("--methodDispatcher---class---:"+this.getClass().getSimpleName());
-            System.out.println("--methodDispatcher---method--:"+methodName);
-            Method method = this.getClass().getMethod(methodName, HttpServletRequest.class, HttpServletResponse.class);
-            method.invoke(this,(HttpServletRequest)req, (HttpServletResponse)resp);
-
+            Method method = this.getClass().getDeclaredMethod(methodName,
+                    HttpServletRequest.class,
+                    HttpServletResponse.class);
+            method.setAccessible(true);
+            method.invoke(this, (HttpServletRequest) req, (HttpServletResponse) resp);
         } catch (InvocationTargetException e) {
             e.printStackTrace();
         } catch (NoSuchMethodException e) {
