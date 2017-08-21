@@ -1,6 +1,7 @@
 package servlet;
 
 import entity.Post;
+import org.robin.servlet.MethodDispatcherServlet;
 import service.PostServiceImpl;
 
 import javax.servlet.ServletException;

@@ -1,8 +1,11 @@
 package entity;
 
+import org.robin.jdbc.sql.DBTable;
+
 /**
  * Created by robin on 2017/8/18.
  */
+@DBTable("post")
 public class Post {
     private int id;
     private String name;
@@ -47,6 +50,7 @@ public class Post {
         this.keyword = keyword;
         this.content = content;
     }
+    public Post(){}
 
     @Override
     public String toString() {

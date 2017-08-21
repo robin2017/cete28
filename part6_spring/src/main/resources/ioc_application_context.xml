@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans>
+   <bean id="animal" class="phz.springframework.test.Cat">
+      <property name="name" value="kitty" />
+   </bean>
+</beans>

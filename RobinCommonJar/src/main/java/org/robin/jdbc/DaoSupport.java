@@ -1,4 +1,5 @@
 package org.robin.jdbc;
+
 import java.io.Serializable;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -6,7 +7,7 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DaoSupport<T> implements Dao<T>{
+public class DaoSupport<T> implements Dao<T> {
 
 	//@Override
 	public T findById(Serializable id, String sql,RowMapper<T> rm) {
@@ -15,7 +16,7 @@ public class DaoSupport<T> implements Dao<T>{
 		ResultSet rs = null;
 		T t = null;
 		try {
-			con = JDBCUtil.getConn();
+			con = JdbcUtil.getConn();
 			pstmt = con.prepareStatement(sql);
 			pstmt.setObject(1,id);
 			rs = pstmt.executeQuery();
@@ -40,7 +41,7 @@ public class DaoSupport<T> implements Dao<T>{
 		ResultSet rs = null;
 		List<T> lists = new ArrayList<T>();
 		try {
-			con = JDBCUtil.getConn();
+			con = JdbcUtil.getConn();
 			pstmt = con.prepareStatement(sql);
 			for(int i = 0; i < obj.length;i++){
 				pstmt.setObject(i+1, obj[i]);
@@ -62,7 +63,7 @@ public class DaoSupport<T> implements Dao<T>{
 		PreparedStatement pstmt = null;
 		int n = 0;
 		try {
-			con = JDBCUtil.getConn();
+			con = JdbcUtil.getConn();
 			pstmt = con.prepareStatement(sql);
 			for(int i = 0; i < obj.length;i++){
 				pstmt.setObject(i+1, obj[i]);
@@ -73,5 +74,6 @@ public class DaoSupport<T> implements Dao<T>{
 		}
 		return n;
 	}
+
 
 }
