@@ -27,13 +27,13 @@
 	   <mvc:annotation-driven/>
 	   
 	 <!-- 配置拦截器(根据需求) -->
-	 <mvc:interceptors>
-      <mvc:interceptor>
-         <mvc:mapping path="/pet/*"/>
-         <mvc:exclude-mapping path="/other/*"/>
-         <bean class="beans.LoggerInterceptor"/>
-       </mvc:interceptor>
-     </mvc:interceptors>
+	 <!--<mvc:interceptors>-->
+      <!--<mvc:interceptor>-->
+         <!--<mvc:mapping path="/pet/*"/>-->
+         <!--<mvc:exclude-mapping path="/other/*"/>-->
+         <!--<bean class="beans.LoggerInterceptor"/>-->
+       <!--</mvc:interceptor>-->
+     <!--</mvc:interceptors>-->
 	   
 	   
 	   <!-- 配置视图解析器 -->

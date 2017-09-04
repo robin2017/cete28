@@ -11,8 +11,10 @@ public class HelloWorldController implements Controller{
 	public ModelAndView handleRequest(
 			HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
+
 		ModelAndView mv=new ModelAndView("hello");
 		mv.addObject("message","helloworld");
 		return mv;
+
 	}
 }

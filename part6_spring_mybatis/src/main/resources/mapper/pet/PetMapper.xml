@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.company.mybatis.mapper.dao.PetDao">
+<cache eviction="FIFO" flushInterval="60000"
+       size="512" readOnly="true"/>
+       <!--如果没有别名，那么就是全路径名称-->
+      <select id="findObjects" resultType="pet">
+          select * from pets;
+      </select>
+       
+      <select id="findObjectById" 
+       parameterType="integer"
+       resultType="pet">
+         select *
+         from pets
+         where id=#{id}
+      </select>
+      <update id="updateObject">
+          update pets
+          set name=#{name},
+              code=#{code},
+              birthday=#{birthday},
+              note=#{note},
+              modifiedTime=NOW(),
+              modifiedUser=#{modifiedUser}
+          where id=#{id}
+      </update>
+      <delete id="deleteObject" parameterType="integer">
+           delete from pets where id=#{id}
+      </delete>
+      <insert id="insertObject" parameterType="pet">
+        INSERT INTO pets
+		    (id,
+		    code,
+			name,
+			birthday,
+			note,
+			createdUser,
+			createdTime,
+			modifiedUser,
+			modifiedTime)
+		 VALUES
+		    (#{id},
+		    #{code},
+		    #{name},
+		    #{birthday},
+		    #{note},
+		    #{createdUser},
+		    NOW(),
+		    #{modifiedUser},
+		    NOW())
+    </insert>
+
+</mapper>

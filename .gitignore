@@ -1,3 +1,5 @@
 .idea
 cetc28_code.iml
 out/
+target
+target/*

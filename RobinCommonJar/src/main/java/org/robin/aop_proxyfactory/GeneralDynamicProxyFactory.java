@@ -28,6 +28,7 @@ public class GeneralDynamicProxyFactory implements InvocationHandler{
 			before.setMethod(method);
 			isContinue=before.before();
 		}
+		// target must be public interface,otherwise be error
 		if(isContinue)
 			method.invoke(target, args);
 		//��������

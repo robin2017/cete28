@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="beans.dao.PetDao">
+      <cache eviction="FIFO" flushInterval="60000"
+       size="1024" readOnly="true"/>
+      <insert id="insertObject" 
+       parameterType="beans.domain.Pet">
+        INSERT INTO pets
+		    (id,
+			name,
+			note)
+		 VALUES
+		    (#{id},
+		    #{name},
+		    #{note})
+     </insert>
+     <select id="findObjects" resultType="beans.domain.Pet">
+         select * from pets;
+     </select>
+     <select id="findObjectsByName" 
+        parameterType="string"
+        resultType="beans.domain.Pet">
+         select * from pets
+         <where>
+            <if test="name!=null and name!=''">
+              name like concat("%",#{name},"%");
+            </if>
+         </where> 
+     </select>
+</mapper>

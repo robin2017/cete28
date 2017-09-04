@@ -11,6 +11,6 @@
     <title></title>
   </head>
   <body>
-
+this is a static page
   </body>
 </html>

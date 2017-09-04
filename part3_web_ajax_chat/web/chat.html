@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Robin Test</title>
+    <script src="../../jquery/jquery.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        $(function () {
+//             主函数
+
+
+            var xml="<response><status>1</status><time>12334</time></response>";
+            var json='{"name":"robin","age":"23"}';
+
+           alert($(json).name)
+
+
+            $("#submit").click(function(){
+                $.post("chat.jsp",{
+                    user:$("user").val(),
+                    msg:$("msg").val(),
+                    action:"postmsg",
+                    time:timestamp
+                },function(xml){
+                    $("#chatShow").val("");
+                    addMessages(xml)   // 解析XML的函数
+                })
+            })
+
+        })
+    </script>
+</head>
+<body>
+<h1 align="center">CHAT ROOM</h1>
+
+<div>
+    <textarea id="chatShow" rows="13" cols="90">
+        加载中
+    </textarea>
+    <!--使用ajax，就不需要form了-->
+    <p>
+        姓名：<input type="text" name="user"/></br>
+        内容：<input type="text" name="msg"/></br>
+        <input type="button" value="发送" id="submit"/></br>
+    <p>
+</div>
+
+
+<form action="xxx" method="post">
+    姓名:<input type="text" name="name"/></br>
+    内容:<input type="text" name="content"/></br>
+    <input type="submit" value="提交" /></br>
+</form>
+
+</body>
+</html>

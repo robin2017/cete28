@@ -4,6 +4,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 @RequestMapping("/pet/")
 public class PetController {
+	public PetController(){
+		System.out.println("petcontroller constuctor");
+	}
+
 	@RequestMapping("editUI")
 	public String editUI() {
 		System.out.println("ediUI");

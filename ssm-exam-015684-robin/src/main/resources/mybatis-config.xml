@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+      <properties resource="database.properties"/>
+	<!--   settings是选择性配置   robin   -->
+      <settings>
+        <!-- lazyLoadingEnabled:延迟加载启动，默认是false -->
+        <setting name="lazyLoadingEnabled" value="true"/>
+        <!-- aggressiveLazyLoading：积极的懒加载，false的话按需加载，默认是true -->
+        <setting name="aggressiveLazyLoading" value="false"/>
+        <!-- 开启二级缓存，默认是false -->
+        <setting name="cacheEnabled" value="true"/>
+      </settings>
+	<!--别名，就是类名首字母小写 robin -->
+	  <typeAliases>
+	  	<package name="blog.domain"/>
+	  </typeAliases>
+	  <environments default="development">
+	    <environment id="development">
+	      <transactionManager type="JDBC"/>
+			<!--mybatis内置一个连接池 robin  -->
+	      <dataSource type="POOLED">
+	        <property name="driver" value="${jdbc.driverClassName}"/>
+	        <property name="url" value="${jdbc.url}"/>
+	        <property name="username" value="${jdbc.username}"/>
+	        <property name="password" value="${jdbc.password}"/>
+	      </dataSource>
+	    </environment>
+	  </environments>
+	  <mappers>
+	    <mapper resource="mapper/BlogMapper.xml"/>
+	  </mappers>
+</configuration>
+
+
+

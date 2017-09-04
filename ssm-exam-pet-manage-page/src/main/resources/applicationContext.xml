@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans default-lazy-init="true"
+    xmlns="http://www.springframework.org/schema/beans" 
+    xmlns:p="http://www.springframework.org/schema/p"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xmlns:context="http://www.springframework.org/schema/context"
+    xmlns:tx="http://www.springframework.org/schema/tx"
+    xmlns:aop="http://www.springframework.org/schema/aop" 
+    xmlns:mvc="http://www.springframework.org/schema/mvc"
+    xmlns:util="http://www.springframework.org/schema/util"
+    xsi:schemaLocation="  
+       http://www.springframework.org/schema/beans   
+       http://www.springframework.org/schema/beans/spring-beans.xsd  
+       http://www.springframework.org/schema/mvc   
+       http://www.springframework.org/schema/mvc/spring-mvc.xsd   
+       http://www.springframework.org/schema/tx   
+       http://www.springframework.org/schema/tx/spring-tx.xsd   
+       http://www.springframework.org/schema/aop 
+       http://www.springframework.org/schema/aop/spring-aop.xsd
+       http://www.springframework.org/schema/util 
+       http://www.springframework.org/schema/util/spring-util.xsd
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context.xsd">
+       <!-- 1.Spring MVC -->
+       <!-- 配置组件扫描 -->
+       <context:component-scan base-package="beans"/>
+       <!-- 配置MVC注解扫描 -->
+	   <mvc:annotation-driven/>	   
+	   <!-- 配置视图解析器 -->
+       <bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+           <property name="prefix" value="/WEB-INF/pages/"></property>
+           <property name="suffix" value=".jsp"></property>
+       </bean>
+       <!-- 2.整合mybatis -->
+       <!-- 2.1 配置数据源 (借助阿里的DRUID)
+        a)数据库驱动程序
+        b)添加DRUID连接池
+       -->
+       <bean id="dataSource" 
+        class="com.alibaba.druid.pool.DruidDataSource">
+        <property name="driverClassName" 
+        value="com.mysql.jdbc.Driver"/>
+        <property name="url" value="jdbc:mysql:///mybatis"/>
+        <property name="username" value="root"/>
+        <property name="password" value="123456"/>
+       </bean>
+       <!-- 2.2配置sessionFactory 
+        1)添加mybatisxxx.jar
+        2)添加mybatis-springxxx.jar-->
+        
+       <bean id="sessionFactory" 
+       class="org.mybatis.spring.SqlSessionFactoryBean">
+         <property name="dataSource" ref="dataSource"/>
+         <property name="mapperLocations" 
+         value="classpath:mapper/*.xml"/>
+       </bean>
+       
+       <!--2.3 配置dao的扫描,mybatis会自动为扫描到的
+       dao接口创建代理对象，通过代理对象执行mybatis中
+       dao的具体操作 -->
+       <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+           <property name="basePackage" value="beans.dao "/>
+       </bean>
+       
+       <!--(事务管理)transaction manager, use JtaTransactionManager for global tx -->
+	   <bean id="transactionManager"
+		 class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		 <property name="dataSource" ref="dataSource" />
+	   </bean>
+       <!--可通过注解控制事务 -->
+	   <tx:annotation-driven transaction-manager="transactionManager"/>
+</beans>
