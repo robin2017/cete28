@@ -9,7 +9,7 @@ import java.util.List;
 public interface PostService {
 	List<Post> findAllPosts();
 	Post findPostById(Integer id);
-	Integer insertPost(Post project);
-	Integer updatePost(Post project);
+	Integer insertPost(Post post);
+	Integer updatePost(Post post);
 	Integer deletePost(Integer id);
 }

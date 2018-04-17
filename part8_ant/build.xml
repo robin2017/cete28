@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<project name="main" default="all" basedir=".">
+    <target name="all" depends="init,compile,jar" >
+    </target>
+
+    <target name="init">
+        <property name="dirs.base" value="${basedir}"/>
+        <property name="classdir" value="${dirs.base}/classes"/>
+        <property name="src" value="${dirs.base}/src"/>
+        <property name="lib" value="${dirs.base}/lib"/>
+        <property name="outputjar" value="${dirs.base}/lib/HelloAntWorld.jar"/>
+        <mkdir dir="${classdir}"/>
+        <mkdir dir="${lib}"/>
+    </target>
+
+    <target name="jar" depends="init">
+        <jar jarfile="${outputjar}" >
+            <fileset dir="${classdir}" />
+        </jar>
+    </target>
+
+
+    <target name="compile" depends="init">
+        <javac debug="true" srcdir="${src}"
+               destdir="${classdir}" />
+    </target>
+
+    <target name="clean" depends="init">
+        <delete dir="${classdir}"/>
+    </target>
+</project>
+

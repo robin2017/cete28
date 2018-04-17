@@ -14,7 +14,7 @@
       </settings>
 	<!--别名，就是类名首字母小写 robin -->
 	  <typeAliases>
-	  	<package name="cn.company.mybatis.pet.domain"/>
+	  	<package name="cn.company.mybatis.mapper.domain"/>
 	  </typeAliases>
 	  <environments default="development">
 	    <environment id="development">
@@ -29,7 +29,7 @@
 	    </environment>
 	  </environments>
 	  <mappers>
-	    <mapper resource="mapper/pet/PetMapper.xml"/>
+	    <mapper resource="post/PostMapper.xml"/>
 	  </mappers>
 </configuration>
 

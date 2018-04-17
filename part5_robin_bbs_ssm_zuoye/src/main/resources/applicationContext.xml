@@ -22,7 +22,7 @@
        http://www.springframework.org/schema/context
        http://www.springframework.org/schema/context/spring-context.xsd">
        <!-- 配置组件扫描 -->
-       <context:component-scan base-package="cn.company.mybatis.pet"/>
+       <context:component-scan base-package="robin"/>
        <!-- 配置MVC注解扫描 -->
 	   <mvc:annotation-driven/>
 	   

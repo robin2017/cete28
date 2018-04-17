@@ -1,31 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="dao.PostDao">
+<mapper namespace="dao.BeanDao">
 <cache eviction="FIFO" flushInterval="60000"
        size="512" readOnly="true"/>
        <!--如果没有别名，那么就是全路径名称-->
-      <select id="findAllPosts" resultType="post">
+      <select id="findAllBeans" resultType="post">
           select * from post;
       </select>
        
-      <select id="findPostById"
+      <select id="findBeanById"
        parameterType="integer"
        resultType="post">
          select *
          from post
          where id=#{id}
       </select>
-      <update id="updatePost">
+      <update id="updateBean">
           update post
           set name=#{name},
               keyword=#{keyword},
               content=#{content},
           where id=#{id}
       </update>
-      <delete id="deletePost" parameterType="integer">
+      <delete id="deleteBean" parameterType="integer">
            delete from post where id=#{id}
       </delete>
-      <insert id="insertPost" parameterType="post">
+      <insert id="insertBean" parameterType="post">
         INSERT INTO post
 		    (id,
 		    name,

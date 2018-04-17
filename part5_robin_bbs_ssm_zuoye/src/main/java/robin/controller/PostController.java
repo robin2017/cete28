@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 @Controller
-@RequestMapping("/pet/")
+@RequestMapping("/post/")
 public class PostController {
 
 //	按照类型进行查找
@@ -25,14 +25,14 @@ public class PostController {
 	@RequestMapping("editUI")
 	public ModelAndView editUI(String id) {
 		System.out.println("ediUI");
-		ModelAndView mv=new ModelAndView("pet_edit");
+		ModelAndView mv=new ModelAndView("post_edit");
 		if(id==null||id.length()==0)
 			return mv;
 		else{
-			Post pet=postService.findObjectById(Integer.parseInt(id));
-			mv.addObject("pet",pet);
+			Post post=postService.findObjectById(Integer.parseInt(id));
+			mv.addObject("post",post);
 			System.out.println("editui :");
-			System.out.println(pet);
+			System.out.println(post);
 		}
 		return mv;
 	}
@@ -41,8 +41,8 @@ public class PostController {
 
 		System.out.println("listUI");
 		List<Post> list=postService.findObjects();
-		request.setAttribute("pets",list);
-		return "pet_list";
+		request.setAttribute("posts",list);
+		return "post_list";
 	}
 	@RequestMapping("doSave")
 	public String doSave(HttpServletRequest req,String id,String name,String keyword,String content) {
@@ -60,12 +60,12 @@ public class PostController {
 		else
 			postService.saveObject(pet);
 
-		return "redirect:/pet/listUI.do";
+		return "redirect:/post/listUI.do";
 	}
 	@RequestMapping("doDelete")
 	public String doDelete(HttpServletRequest req,String id) {
 		postService.deleteObject(Integer.parseInt(id));
-		return "redirect:/pet/listUI.do";
+		return "redirect:/post/listUI.do";
 	}
 
 }

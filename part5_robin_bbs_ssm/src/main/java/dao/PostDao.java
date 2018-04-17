@@ -7,9 +7,9 @@ import java.util.List;
 
 /**�Ŀ��Ϣdao*/
 public interface PostDao {
-	List<Post> findObjects();
-	Post findObjectById(Integer id);
-	Integer insertObject(Post project);
-	Integer updateObject(Post project);
-	Integer deleteObject(Integer id);
+	List<Post> findAllPosts();
+	Post findPostById(Integer id);
+	Integer insertPost(Post project);
+	Integer updatePost(Post project);
+	Integer deletePost(Integer id);
 }
