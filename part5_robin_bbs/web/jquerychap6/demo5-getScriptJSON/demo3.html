@@ -19,6 +19,8 @@ body { font-size:12px;}
                  $('#resText').empty();
 				  var html = '';
 				  $.each( data  , function(commentIndex, comment) {
+                      alert(data)
+                      alert(content)
 					  html += '<div class="comment"><h6>' + comment['username'] + ':</h6><p class="para">' + comment['content'] + '</p></div>';
 				  })
 				 $('#resText').html(html);

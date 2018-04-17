@@ -1,19 +1,64 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/ TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
     <meta charset="UTF-8">
     <title>Robin Test</title>
-    <script src="../../jquery/jquery.js" type="text/javascript"></script>
+    <script src="../scripts/jquery.js" type="text/javascript"></script>
     <script type="text/javascript">
+
         $(function () {
-//             主函数
+            $("#bt").click(function(){
+                $.get("listdemo.jsp",{
+                    id:$("#id").val(),
+                    name:$("#name").val(),
+                    sex:$("#sex").val()
+                },function(data, textStatus){
+                    //alert(data)
+                    console.log(data);
+                    $("tbody").append(data)
+                })
+            })
 
+//
+//            $(".del").click(function(){
+//                $(this).parent().parent().remove();
+//            })
 
+            $(".del").on('click','.del',function(){
+                $(this).parent().parent().remove();
+            })
         })
+
+
     </script>
 </head>
-<body>
+<br>
 <h1 align="center">hello,robin</h1>
+
+
+<!--ajax不用表单进行提交的,不用<input type="submit"/>  而是用<input type="button"/>-->
+
+ID:<input type="text" id="id" /></br>
+name:<input type="text" id="name"/></br>
+sex:<input type="text" id="sex"/></br>
+<input type="button" id="bt" value="提交"/></br>
+
+<table border="1">
+    <thead>
+    <tr>
+        <th>id</th><th>name</th><th>sex</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>1</td><td>robin</td><td>male</td><td><input type="button" class="del" value="删除"/></td>
+    </tr>
+    <tr>
+        <td>2</td><td>peter</td><td>female</td><td><input type="button" class="del" value="删除"/></td>
+    </tr>
+    </tbody>
+</table>
+
 
 </body>
 </html>

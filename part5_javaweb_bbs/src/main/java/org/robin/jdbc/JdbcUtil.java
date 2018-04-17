@@ -1,18 +1,17 @@
 package org.robin.jdbc;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.Properties;
 
+
 public class JdbcUtil {
+
 	private static Properties prop = new Properties();
 	private static ThreadLocal<Connection> tl = 
 			              new ThreadLocal<Connection>();
 	static {
 		try {
+
 			prop.load(JdbcUtil.class.getResourceAsStream("/database.properties"));
 		} catch (Exception e) {
 			// TODO: handle exception

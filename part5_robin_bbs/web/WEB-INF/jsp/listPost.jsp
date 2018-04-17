@@ -23,10 +23,8 @@
   <td>${post.name}</td>
   <td>${post.keyword}</td>
   <td>${post.content}</td>
-
   <a href="postServlet?method=delete&id=${post.id}">删除</a>
   <a href="postServlet?method=update&id=${post.id}">修改</a>
-
 </tr><br/>
 </c:forEach>
 <br/>

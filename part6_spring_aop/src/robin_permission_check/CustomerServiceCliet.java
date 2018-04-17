@@ -9,8 +9,6 @@ import robin_permission_check.service.CustomerServiceImpl;
  * Created by robin on 2017/8/21.
  */
 public class CustomerServiceCliet {
-
-
     public static void main(String[] args) {
 
         GeneralDynamicProxyFactory proxyFactory=new GeneralDynamicProxyFactory();

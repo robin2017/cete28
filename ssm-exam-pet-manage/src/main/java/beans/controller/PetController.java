@@ -18,6 +18,7 @@ public class PetController {
 	private PetService petService;
 	@RequestMapping("listUI")
 	public String listUI() {
+		System.out.println("listUi");
 		return "pet_list";
 	}
 	@RequestMapping("editUI")

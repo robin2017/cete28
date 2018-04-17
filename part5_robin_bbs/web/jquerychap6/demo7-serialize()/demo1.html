@@ -15,10 +15,25 @@ body { font-size:12px;}
 <script language="javascript" >
 	$(function(){
 	   $("#send").click(function(){
-			$.post("get1.jsp", $("#form1").serialize() , function (data, textStatus){
+
+		   alert($("#form1").serializeArray())
+			$.post("get1.jsp",
+					$("#form1").serialize()
+					, function (data, textStatus){
                         $("#resText").html(data); // 把返回的数据添加到页面上
 					}
 			);
+
+
+//		   $.post("get1.jsp",
+//				   {
+//					   username:$("#username").val(),
+//					   content:$("#content").val()
+//				   }
+//				   , function (data, textStatus){
+//					   $("#resText").html(data); // 把返回的数据添加到页面上
+//				   }
+//		   );
 	   })
 	})
 </script>

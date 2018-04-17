@@ -15,6 +15,7 @@ body { font-size:12px;}
 <script language="javascript" >
 	$(function(){
 	   $("#send").click(function(){
+
 			$.get("get3.jsp", { 
 					    username :  encodeURI( $("#username").val() ) , 
 						content :   encodeURI( $("#content").val() ) 
@@ -23,9 +24,11 @@ body { font-size:12px;}
 						var content = data.content;
 						username =  decodeURI(username);
 						content = decodeURI(content);
-					    var txtHtml = "<div class='comment'><h6>"+username+":</h6><p class='para'>"+content+"</p></div>";
+					    var txtHtml = "<div class='comment'><h6>"+username+
+								":</h6><p class='para'>"+content+"</p></div>";
                         $("#resText").html(txtHtml); // 把返回的数据添加到页面上
 					},"json");
+
 	   })
 	})
 </script>
